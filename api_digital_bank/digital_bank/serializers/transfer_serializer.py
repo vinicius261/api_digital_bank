@@ -15,6 +15,4 @@ class TransferSerializer(serializers.HyperlinkedModelSerializer):
         content = balance_(self, data)
         return content      
 
-    # def validate_date(self, date):
-    #     content = date_(self, date)
-    #     return content    
+  

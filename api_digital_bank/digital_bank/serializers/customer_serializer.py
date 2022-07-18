@@ -4,10 +4,14 @@ from rest_framework import serializers
 from digital_bank.models.costumer import Costumer
 from digital_bank.validators.costumer_validator import *
 
+
 """Essa classe faz as validações dos dados de entrada dos clientes e a serialização."""
 
 
 class CostumerSerializer(serializers.HyperlinkedModelSerializer):
+    balance = serializers.FloatField(read_only=True)
+    cpf = serializers.CharField(allow_null=True)
+    cnpj = serializers.CharField( allow_null=True)
 
     class Meta():
         model = Costumer

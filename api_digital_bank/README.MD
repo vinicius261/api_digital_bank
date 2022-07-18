@@ -48,12 +48,13 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
         "name": "",        
         "address": "",      
         "phone": "",        
-        "email": "",       
-        "balance": null,        
-        "document": "Pessoa física",    """ OU   "document": "Pessoa jurídica" """
+        "email": "",              
+        "document": "CPF",    """ OU   "document": "CNPJ" """
         "cpf": "",          
-        "cnpj": ""
-        }      
+        "cnpj": null
+        } 
+
+        Caso o documento seja CPF colque null no "cnpj" e vice versa.
 
         A resposta será:    
 
@@ -74,6 +75,9 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
                 "cpf": "45698956412",
                 "cnpj": null
             }
+
+        Observe que o valor padrao do saldo é 30 para poder haver transferências
+        já que a API apenas simula um banco e não tem a opção depósito.
 
         Para consultar todas as contas utilize o métodoo GET nessa URL:        
             http://127.0.0.1:8000/cliente/
@@ -132,6 +136,9 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
 
         A URL deve se no formato "http://127.0.0.1:8000/cliente/52ce2afe-32f3-4efa-8b6e-566d7d6bd3fd/"
         onde o que vem depois do "/cliente/" é o "id" do cliente.
+
+        A data precisa ser no formato: "2022-07-17T16:23:00", a omissão da hora
+        deixa por padrão 00:00:00.
 
         A resposta será:
 

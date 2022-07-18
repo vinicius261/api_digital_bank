@@ -1,5 +1,5 @@
 
-from rest_framework import viewsets, permissions,status
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 
 from digital_bank.models.costumer import Costumer

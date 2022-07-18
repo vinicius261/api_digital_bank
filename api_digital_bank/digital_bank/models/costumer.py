@@ -12,15 +12,15 @@ class Costumer(models.Model):
     LEGAL = "CNPJ"
 
     COSTUMER_CHOICES = [
-        (FISICAL, 'Pessoa física'),
-        (LEGAL, 'Pessoa jurídica')
+        (FISICAL, 'CPF'),
+        (LEGAL, 'CNPJ')
     ]
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField("Nome",max_length=100)
     address = models.CharField("Endereço", max_length=200)
     phone = models.CharField("Telefone", max_length=14)
     email = models.EmailField("E-mail")
-    balance = models.FloatField("Saldo", default=30.0)
+    balance = models.FloatField("Saldo", default=30.0, null= True)
     document = models.CharField("Documento", max_length=4, choices=COSTUMER_CHOICES)
     cpf =models.CharField("CPF", max_length=11, null=True)
     cnpj =models.CharField("CNPJ", max_length=14, null=True)

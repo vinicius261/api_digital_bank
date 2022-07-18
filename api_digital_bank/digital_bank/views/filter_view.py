@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from rest_framework import viewsets, generics
+from rest_framework import generics
 from rest_framework.filters import OrderingFilter, SearchFilter
 
 from digital_bank.models.transfer import Transfer
