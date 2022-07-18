@@ -15,7 +15,3 @@ def balance_(self, data):
             {'Saldo': 'O saldo é insuficiente para realizar a transferência.'})
 
     return data
-
-# def date_(self, date):
-#         content = date_(self, date)
-#         return content    

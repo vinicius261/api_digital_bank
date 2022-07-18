@@ -3,6 +3,7 @@ from rest_framework import serializers
 """ Esse script contem as os códigos de manipulaçao das validações dos dados 
 recibidos dos sobre clientes"""
 
+
 def validate_document(self, data):
     if (data.get("document") == "CPF") and (data.get("cpf") == None):
         raise serializers.ValidationError(
@@ -50,8 +51,10 @@ def balance_(self, balance):
 
     return balance
 
+
 def address_(self, address):
     if len(address.split(',')) < 4:
-        raise serializers.ValidationError('Por favor, coloque: Rua, número, bairro e cidade. Todos separados por vírgula.')
-    
+        raise serializers.ValidationError(
+            'Por favor, coloque: Rua, número, bairro e cidade. Todos separados por vírgula.')
+
     return address

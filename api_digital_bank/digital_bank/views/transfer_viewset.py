@@ -16,18 +16,14 @@ class TransferViewSet(viewsets.ModelViewSet):
     serializer_class = TransferSerializer
 
     def create(self, request, *args, **kwargs):
-        content, headers = balance_udate(self, request)          
-        return Response (content, status=status.HTTP_201_CREATED, headers=headers)
+        content, headers = balance_udate(self, request)
+        return Response(content, status=status.HTTP_201_CREATED, headers=headers)
 
     def destroy(self, request, pk=None):
         return Response({'Não é possível deletar os dados.'})
-    
-    def partial_update(self, request, pk=None): 
-        return Response({'Não é possível alterar os dados.'}) 
 
-    def update(self, request, pk=None): 
-        return Response({'Não é possível alterar os dados.'}) 
+    def partial_update(self, request, pk=None):
+        return Response({'Não é possível alterar os dados.'})
 
-
-   
-  
+    def update(self, request, pk=None):
+        return Response({'Não é possível alterar os dados.'})

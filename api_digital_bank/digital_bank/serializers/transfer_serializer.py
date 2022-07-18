@@ -5,14 +5,14 @@ from digital_bank.validators.tranfer_validator import balance_
 
 """Essa classe faz as validações dos dados de entrada das transferências e a serialização."""
 
+
 class TransferSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta():
         model = Transfer
-        fields = ['url', 'requesting_costumer', 'favored_costumer', 'date', 'value']
+        fields = ['url', 'requesting_costumer',
+                  'favored_costumer', 'date', 'value']
 
     def validate(self, data):
         content = balance_(self, data)
-        return content      
-
-  
+        return content
