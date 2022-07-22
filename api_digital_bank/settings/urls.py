@@ -24,7 +24,7 @@ from digital_bank.views.transfer_viewset import TransferViewSet
 
 router = routers.DefaultRouter()
 router.register(r'cliente',CostumerViewSet)
-router.register(r'tranferencia',TransferViewSet)
+router.register(r'transferencia',TransferViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

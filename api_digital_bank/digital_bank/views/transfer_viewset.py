@@ -20,10 +20,15 @@ class TransferViewSet(viewsets.ModelViewSet):
         return Response(content, status=status.HTTP_201_CREATED, headers=headers)
 
     def destroy(self, request, pk=None):
-        return Response({'Não é possível deletar os dados.'})
+        content = {'menssagem': 'Não é possível deletar os dados.'} 
+        return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
 
     def partial_update(self, request, pk=None):
-        return Response({'Não é possível alterar os dados.'})
+        content = {'menssagem': 'Não é possível deletar os dados.'} 
+        return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
 
     def update(self, request, pk=None):
-        return Response({'Não é possível alterar os dados.'})
+        content = {'menssagem': 'Não é possível deletar os dados.'} 
+        return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)

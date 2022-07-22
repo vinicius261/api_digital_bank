@@ -10,3 +10,5 @@ def clean_id(link: str):
     uuid = url[4]
 
     return uuid
+
+

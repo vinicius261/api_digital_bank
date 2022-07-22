@@ -1,5 +1,5 @@
 
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
 from digital_bank.models.costumer import Costumer
@@ -12,19 +12,22 @@ dos clientes e das buscas por dados dos clientes."""
 class CostumerViewSet(viewsets.ModelViewSet):
     queryset = Costumer.objects.all()
     serializer_class = CostumerSerializer
-    permission_classes = [permissions.IsAuthenticated]  # isautenticated?
+    # permission_classes = [permissions.IsAuthenticated]  # isautenticated?
 
     def destroy(self, request, pk=None):
-        return Response({'menssagem': 'Não é possível deletar os dados.'})
+        content = {'menssagem': 'Não é possível deletar os dados.'} 
+        return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
-        response = f"O saldo atual do cliente {serializer.data['name']} é de R${serializer.data['balance']}."
-        return Response({response})
+        response = f"O saldo atual do cliente {serializer.data['name']} é de R${serializer.data['balance']}"
+        return Response(response, status=status.HTTP_200_OK)
 
     def partial_update(self, request, pk=None):
-        return Response({'Não é possível alterar os dados.'})
+        content = {'menssagem': 'Não é possível deletar os dados.'}
+        return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def update(self, request, pk=None):
-        return Response({'Não é possível alterar os dados.'})
+        content = {'menssagem': 'Não é possível deletar os dados.'}
+        return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
