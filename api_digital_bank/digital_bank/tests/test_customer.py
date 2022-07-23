@@ -1,27 +1,31 @@
+""" Essa classe realiza os testes sobre as ações possíveis em relação aos
+clientes."""
 
 from rest_framework.test import APITestCase
+
 
 null = None
 
 customer = {
     "cpf": "40122912589",
     "cnpj": null,
-    "name": "Vinicius Mira",
-    "address": "Rua Lira, 569, Jd. Sta, São PAulo",
-    "phone": "1123569899",
-    "email": "vinicius@hotmail.com",
+    "name": "Vinicius Santos",
+    "address": "Rua Lira, 569, Jd. Sta, Ubatuba",
+    "phone": "1123569877",
+    "email": "vinicius2@hotmail.com",
     "document": "CPF"
 }
 
 customer1 = {
-    "cpf": "40122912874",
-    "cnpj": null,
-    "name": "Aurelio Mira",
+    "cpf": null,
+    "cnpj": "12345678912345",
+    "name": "Padaria LTDA",
     "address": "Rua Lira, 569, Jd. Sta, São PAulo",
     "phone": "1123569899",
-    "email": "vinicius@hotmail.com",
-    "document": "CPF"
+    "email": "pao@hotmail.com",
+    "document": "CNPJ"
 }
+
 
 class CostumerTestCase(APITestCase):
 
@@ -33,51 +37,48 @@ class CostumerTestCase(APITestCase):
 
     def test_get(self):
 
-        post1 = self.client.post('/cliente/', customer, format='json')
-        post2 = self.client.post('/cliente/', customer1, format='json')
+        post_test = self.client.post('/cliente/', customer, format='json')
+        post_test2 = self.client.post('/cliente/', customer1, format='json')
 
         response = self.client.get('/cliente/')
 
-        self.assertTrue(response.data["count"] == 2 )    
+        self.assertTrue(response.data["count"] == 2)
+
+    def test_get_balance(self):
+
+        post_test = self.client.post('/cliente/', customer, format='json')
+
+        response = self.client.get(
+            post_test.data["url"], format='json', follow=True)
+
+        self.assertEqual(
+            response.data, f"O saldo atual do cliente Vinicius Santos é de R$30.0")
 
     def test_detroy(self):
 
-        post1 = self.client.post('/cliente/', customer, format='json')
+        post_test = self.client.post('/cliente/', customer, format='json')
 
-        response = self.client.delete('/cliente/', customer, format='json', follow= True)
+        response = self.client.delete(
+            post_test.data["url"], format='json', follow=True)
 
-        self.assertEqual(response.status_code, 405)    
+        self.assertEqual(response.status_code, 405)
 
     def test_partial_update(self):
         request = {
-        "phone": "1123569874",
+            "phone": "1123569874",
         }
 
-        post1 = self.client.post('/cliente/', customer, format='json')
+        post_test = self.client.post('/cliente/', customer, format='json')
 
-        response = self.client.patch('/cliente/', request, format='json', follow= True)
+        response = self.client.patch(
+            '/cliente/', request, format='json', follow=True)
 
-        self.assertEqual(response.status_code, 405)    
+        self.assertEqual(response.status_code, 405)
 
     def test_update(self):
-        post1 = self.client.post('/cliente/', customer, format='json')
+        post_test = self.client.post('/cliente/', customer, format='json')
 
-        response = self.client.put('/cliente/', customer1, format='json', follow= True)
+        response = self.client.put(
+            '/cliente/', customer1, format='json', follow=True)
 
-        self.assertEqual(response.status_code, 405)    
-
-
-    #  def retrieve(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     serializer = self.get_serializer(instance)
-    #     response = f"O saldo atual do cliente {serializer.data['name']} é de R${serializer.data['balance']}."
-    #     return Response({response})   
-
-    # def test_detroy_msg(self):
-
-
-    #         post1 = self.client.post('/cliente/', customer, format='json')
-
-    #         response = self.client.delete('/cliente/', customer, format='json', follow= True)
-
-    #         self.assertTrue(response.content['menssagem'], {'menssagem': 'Não é possível deletar os dados.'})    
+        self.assertEqual(response.status_code, 405)

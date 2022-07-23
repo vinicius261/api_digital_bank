@@ -1,5 +1,5 @@
 
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from digital_bank.models.costumer import Costumer
@@ -15,7 +15,7 @@ class CostumerViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]  # isautenticated?
 
     def destroy(self, request, pk=None):
-        content = {'menssagem': 'Não é possível deletar os dados.'} 
+        content = 'Não é possível deletar os dados.' 
         return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def retrieve(self, request, *args, **kwargs):
@@ -25,9 +25,9 @@ class CostumerViewSet(viewsets.ModelViewSet):
         return Response(response, status=status.HTTP_200_OK)
 
     def partial_update(self, request, pk=None):
-        content = {'menssagem': 'Não é possível deletar os dados.'}
+        content = 'Não é possível alterar os dados.'
         return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def update(self, request, pk=None):
-        content = {'menssagem': 'Não é possível deletar os dados.'}
+        content = 'Não é possível alterar os dados.'
         return Response(content, status=status.HTTP_405_METHOD_NOT_ALLOWED)

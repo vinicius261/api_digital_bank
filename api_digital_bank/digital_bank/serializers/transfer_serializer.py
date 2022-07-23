@@ -16,3 +16,11 @@ class TransferSerializer(serializers.HyperlinkedModelSerializer):
     def validate(self, data):
         content = balance_(self, data)
         return content
+
+    # def validate_value(self, value):
+
+    #     if type(value) != float:
+    #         raise serializers.ValidationError(
+    #             'Insira apenas números e separe apenas por ponto (ex: 31.57).')
+
+    #     return value
