@@ -1,5 +1,5 @@
 from digital_bank.models.costumer import Costumer
-from digital_bank.support_code.clean_id import clean_id
+from digital_bank.support_code.clean_id import clean_id_
 
 
 """Esse script contém código de tratamento e manipulação de dados para atualizar
@@ -14,7 +14,7 @@ def balance_udate(self, request):
     headers = self.get_success_headers(serializer.data)
 
     balance = Costumer.objects.filter(
-        id=clean_id(str(serializer.data['requesting_costumer']))).values_list('balance')
+        id=clean_id_(str(serializer.data['requesting_costumer']))).values_list('balance')
 
     new_balance = balance.get()[0] - serializer.data['value']
 
@@ -23,7 +23,7 @@ def balance_udate(self, request):
     balance.update(balance=new_balance)
 
     favored_balance = Costumer.objects.filter(
-        id=clean_id(str(serializer.data['favored_costumer']))).values_list('balance')
+        id=clean_id_(str(serializer.data['favored_costumer']))).values_list('balance')
 
     new_favored_balance = favored_balance.get()[0] + serializer.data['value']
 

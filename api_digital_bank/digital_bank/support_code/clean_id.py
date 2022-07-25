@@ -3,7 +3,7 @@ os saldos na ralização das tranferências. Ele transforma a URL recebida em "i
 tornando a busca do saldo do cliente possível"""
 
 
-def clean_id(link: str):
+def clean_id_(link: str):
 
     url = link.split('/')
 
