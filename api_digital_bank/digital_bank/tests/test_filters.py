@@ -1,9 +1,11 @@
-""" Essa classe realiza os testes sobre as ações possíveis em relação aos
-as consultas de transferências."""
+
 
 from rest_framework.test import APITestCase
 
 from digital_bank.support_code.clean_id import clean_id_
+
+""" Essa classe realiza os testes sobre as ações possíveis em relação aos
+as consultas de transferências."""
 
 null = None
 

@@ -1,5 +1,5 @@
 
-from datetime import datetime
+
 from rest_framework import serializers
 from digital_bank.models.transfer import Transfer
 from digital_bank.validators.tranfer_validator import balance_, value_

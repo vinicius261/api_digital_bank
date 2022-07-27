@@ -1,8 +1,9 @@
-""" Essa classe realiza os testes sobre as ações possíveis em relação aos
-clientes."""
+
 
 from rest_framework.test import APITestCase
 
+""" Essa classe realiza os testes sobre as ações possíveis em relação aos
+clientes."""
 
 null = None
 

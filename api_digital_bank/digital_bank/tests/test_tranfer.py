@@ -1,9 +1,11 @@
-""" Essa classe realiza os testes sobre as ações possíveis em relação aos
-clientes."""
+
 
 from rest_framework.test import APITestCase
 
 from digital_bank.support_code.clean_balance import clean_balance
+
+""" Essa classe realiza os testes sobre as ações possíveis em relação aos
+clientes."""
 
 null = None
 

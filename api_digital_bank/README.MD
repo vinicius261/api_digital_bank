@@ -13,7 +13,7 @@ seguintes ações:
         ○ Com a possibilidade de consultar em um dado período estipulado
     ● Consulta do saldo de uma conta
 
-Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
+Ela foi criada na linguagem Python com uso  do framework Django Rest Framework.
 
 ● Como usar
 
@@ -45,14 +45,14 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
         O corpo da requisição deve ser no formato:
 
         {
-        "name": "",        
-        "address": "",      
-        "phone": "",        
-        "email": "",              
-        "document": "CPF",    """ OU   "document": "CNPJ" """
-        "cpf": "",          
-        "cnpj": null
-        } 
+            "cpf": "",
+            "cnpj": null,
+            "name": "",
+            "address": "",
+            "phone": "",
+            "email": "",
+            "document": "CPF",    """ OU   "document": "CNPJ" """
+        }
 
         Caso o documento seja CPF colque null no "cnpj" e vice versa.
 
@@ -61,19 +61,19 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
             HTTP 201 Created
             Allow: GET, POST, HEAD, OPTIONS
             Content-Type: application/json
-            Location: http://127.0.0.1:8000/cliente/dcc3458d-a803-4a89-9f99-f3b5f346b33c/
+            Location: http://127.0.0.1:8000/cliente/36853bd6-218f-432a-9cba-088d6100c4ec/
             Vary: Accept
 
             {
-                "url": "http://127.0.0.1:8000/cliente/dcc3458d-a803-4a89-9f99-f3b5f346b33c/",
-                "name": "Lucas Silva",
-                "address": "Rua Lira, 369, Santa Efigenia, Rio",
-                "phone": "11996568988",
-                "email": "lu@email.com.br",
+                "url": "http://127.0.0.1:8000/cliente/36853bd6-218f-432a-9cba-088d6100c4ec/",
                 "balance": 30.0,
-                "document": "CPF",
-                "cpf": "45698956412",
-                "cnpj": null
+                "cpf": "40122912589",
+                "cnpj": null,
+                "name": "Felipe Santos",
+                "address": "Rua Lira, 569, Jd. Sta, São PAulo",
+                "phone": "1123569899",
+                "email": "felipe@hotmail.com",
+                "document": "CPF"
             }
 
         Observe que o valor padrao do saldo é 30 para poder haver transferências
@@ -113,9 +113,9 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
             Vary: Accept
 
             [
-                "O saldo atual do cliente Padaria LTDA é de R$30.0."
+                "O saldo atual do cliente Padaria LTDA é de R$30.0"
             ]
-
+    
     ● Transferindo de saldo entre contas
 
         Para realizer a trasnferência de saldo entre contas utilize o métodoo POST
@@ -127,7 +127,6 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
             {
                 "requesting_costumer": "",
                 "favored_costumer": "",
-                "date": "",
                 "value": ""
             }
 
@@ -136,9 +135,6 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
 
         A URL deve se no formato "http://127.0.0.1:8000/cliente/52ce2afe-32f3-4efa-8b6e-566d7d6bd3fd/"
         onde o que vem depois do "/cliente/" é o "id" do cliente.
-
-        A data precisa ser no formato: "2022-07-17T16:23:00", a omissão da hora
-        deixa por padrão 00:00:00.
 
         A resposta será:
 
@@ -184,16 +180,12 @@ Ela foi criada na linguagem python com uso  do framework Django Rest Framework.
 
         O formato inserido deve ser 2022-07-18T00:00:00
 
-        Para separa as especificações use "&".
+        Para separar as especificações use "&".
 
-        A consulta a seguir tras todas as transferências recebidas do cliente
-        entre 18/07/22 e30/07/22:
-            /consulta/?date__gte=2022-07-18T00:00:00&date__lte=2022-07-30T23:59:59&favored_costumer=bfa41dc1-8307-4002-9c37-1806c1f2795e
+        Exemplo:
+            A consulta a seguir tras todas as transferências recebidas do cliente
+            entre 18/07/22 e30/07/22:
+                /consulta/?date__gte=2022-07-18T00:00:00&date__lte=2022-07-30T23:59:59&favored_costumer=bfa41dc1-8307-4002-9c37-1806c1f2795e
 
 
-    ● Consultando o saldo de uma conta 
-
-    Para consultar o saldo de uma conte deve-se utilizar o método GET na URL a
-    seguir com o "id" do cliente após o"/cliente":
-        http://127.0.0.1:8000/cliente/52ce2afe-32f3-4efa-8b6e-566d7d6bd3fd/
 
