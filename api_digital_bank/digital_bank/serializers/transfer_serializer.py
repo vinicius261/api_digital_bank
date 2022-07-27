@@ -1,7 +1,8 @@
 
+from datetime import datetime
 from rest_framework import serializers
 from digital_bank.models.transfer import Transfer
-from digital_bank.validators.tranfer_validator import balance_
+from digital_bank.validators.tranfer_validator import balance_, value_
 
 """Essa classe faz as validações dos dados de entrada das transferências e a serialização."""
 
@@ -17,10 +18,6 @@ class TransferSerializer(serializers.HyperlinkedModelSerializer):
         content = balance_(self, data)
         return content
 
-    # def validate_value(self, value):
-
-    #     if type(value) != float:
-    #         raise serializers.ValidationError(
-    #             'Insira apenas números e separe apenas por ponto (ex: 31.57).')
-
-    #     return value
+    def validate_value(self, value):
+        content = value_(self, value)
+        return content

@@ -5,10 +5,11 @@ from rest_framework.test import APITestCase
 
 from digital_bank.support_code.clean_balance import clean_balance
 
+null = None
 
 customer = {
     "cpf": "40122912522",
-    "cnpj": "12345678912345",
+    "cnpj": null,
     "name": "Vinicius Santos",
     "address": "Rua Lira, 1347, Jd. Sta, Ubatuba",
     "phone": "1123569899",
@@ -18,7 +19,7 @@ customer = {
 
 customer2 = {
     "cpf": "40122912589",
-    "cnpj": "12345678912345",
+    "cnpj": null,
     "name": "Vinicius Santos",
     "address": "Rua Lira, 569, Jd. Sta, São PAulo",
     "phone": "1123569899",

@@ -1,5 +1,6 @@
 
 
+from datetime import datetime
 import uuid
 from django.db import models
 
@@ -16,7 +17,7 @@ class Transfer(models.Model):
         Costumer, on_delete=models.CASCADE, related_name='requesting', verbose_name='Cliente solicitante')
     favored_costumer = models.ForeignKey(
         Costumer, on_delete=models.CASCADE, related_name='favored', verbose_name='Cliente favorecido')
-    date = models.DateTimeField(verbose_name='Data')
+    date = models.DateTimeField(verbose_name='Data', editable= False, default=datetime.now())
     value = models.FloatField()
 
     def __str__(self) -> str:

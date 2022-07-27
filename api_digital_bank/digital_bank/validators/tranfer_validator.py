@@ -15,3 +15,16 @@ def balance_(self, data):
             {'Saldo': 'O saldo é insuficiente para realizar a transferência.'})
 
     return data
+
+
+def value_(self, value):
+
+    if value < 0:
+        raise serializers.ValidationError(
+            'O valor da transferência precisa ser um valor positivo.')
+
+    if type(value) != float:
+            raise serializers.ValidationError(
+                'Insira apenas números e separe apenas por ponto (ex: 31.57).')        
+
+    return value
