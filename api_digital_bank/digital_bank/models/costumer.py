@@ -3,14 +3,16 @@
 import uuid
 from django.db import models
 
+from digital_bank.support_code.costumer_name import costumer_name
+
 
 class Costumer(models.Model):
     """Essa classe representa os clientes e suas contas com todos os atributos
     nescessários para indentificar os cliente e realizar as transferências."""
 
     COSTUMER_CHOICES = [
-        ('Physical', 'CPF'),
-        ('Legal', 'CNPJ')
+        ('CPF', 'CPF'),
+        ('CNPJ', 'CNPJ')
     ]
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField("Nome", max_length=100)
@@ -24,4 +26,4 @@ class Costumer(models.Model):
     cnpj = models.CharField("CNPJ", max_length=14, null=True)
 
     def __str__(self) -> str:
-        return self.cpf
+        return costumer_name(self)

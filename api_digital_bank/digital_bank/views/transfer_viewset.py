@@ -7,11 +7,11 @@ from digital_bank.models.transfer import Transfer
 from digital_bank.serializers.transfer_serializer import TransferSerializer
 from digital_bank.support_code.balace_updates import balance_udate
 
-""" Essa classe contém os parâmetros de customizção das visualizações do banco de dados
-dos clientes e das buscas por dados das tranferências."""
-
 
 class TransferViewSet(viewsets.ModelViewSet):
+    """ Essa classe contém os parâmetros de customizção das visualizações do banco de dados
+    dos clientes e das buscas por dados das tranferências."""
+
     queryset = Transfer.objects.all()
     serializer_class = TransferSerializer
 

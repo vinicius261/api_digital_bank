@@ -1,8 +1,7 @@
-null = None
 
 customer = {
     "cpf": "40122912589",
-    "cnpj": null,
+    "cnpj": "null",
     "name": "Vinicius Santos",
     "address": "Rua Lira, 569, Jd. Sta, Ubatuba",
     "phone": "1123569877",
@@ -11,7 +10,7 @@ customer = {
 }
 
 customer1 = {
-    "cpf": null,
+    "cpf": "null",
     "cnpj": "12345678912345",
     "name": "Padaria LTDA",
     "address": "Rua Lira, 569, Jd. Sta, São PAulo",

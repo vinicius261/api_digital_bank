@@ -5,14 +5,12 @@ from rest_framework.response import Response
 from digital_bank.models.costumer import Costumer
 from digital_bank.serializers.customer_serializer import CostumerSerializer
 
-""" Essa classe contém os parâmetros de customizção das visualizações do banco de dados
-dos clientes e das buscas por dados dos clientes."""
-
 
 class CostumerViewSet(viewsets.ModelViewSet):
+    """ Essa classe contém os parâmetros de customizção das visualizações do banco de dados
+    dos clientes e das buscas por dados dos clientes."""
     queryset = Costumer.objects.all()
     serializer_class = CostumerSerializer
-    # permission_classes = [permissions.IsAuthenticated]  # isautenticated?
 
     def destroy(self, request, pk=None):
         content = 'Não é possível deletar os dados.' 

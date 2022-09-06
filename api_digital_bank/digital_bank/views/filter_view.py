@@ -5,11 +5,12 @@ from rest_framework.filters import OrderingFilter, SearchFilter
 from digital_bank.models.transfer import Transfer
 from digital_bank.serializers.filter_serializer import FilterTransferSerializer
 
-""" Essa classe contém os parâmetros de filtragem e busca de dados no banco de
-de dados de transferências."""
 
 
 class TransferListView(generics.ListAPIView):
+    """ Essa classe contém os parâmetros de filtragem e busca de dados no banco de
+    de dados de transferências."""
+
     queryset = Transfer.objects.all()
     serializer_class = FilterTransferSerializer
     filter_backends = (filters.DjangoFilterBackend,
