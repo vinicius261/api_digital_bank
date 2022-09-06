@@ -4,10 +4,9 @@ from rest_framework import serializers
 from digital_bank.models.transfer import Transfer
 from digital_bank.validators.tranfer_validator import balance_, value_
 
-"""Essa classe faz as validações dos dados de entrada das transferências e a serialização."""
-
 
 class TransferSerializer(serializers.HyperlinkedModelSerializer):
+    """Essa classe faz as validações dos dados de entrada das transferências e a serialização."""
 
     class Meta():
         model = Transfer

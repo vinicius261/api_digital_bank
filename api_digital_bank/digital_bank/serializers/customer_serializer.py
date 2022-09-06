@@ -5,10 +5,9 @@ from digital_bank.models.costumer import Costumer
 from digital_bank.validators.costumer_validator import *
 
 
-"""Essa classe faz as validações dos dados de entrada dos clientes e a serialização."""
-
-
 class CostumerSerializer(serializers.HyperlinkedModelSerializer):
+    """Essa classe faz as validações dos dados de entrada dos clientes e a serialização."""
+
     balance = serializers.FloatField(read_only=True)
     cpf = serializers.CharField(allow_null=True)
     cnpj = serializers.CharField(allow_null=True)
@@ -18,21 +17,16 @@ class CostumerSerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
 
     def validate(self, data):
-        content = validate_document(self, data)
-        return content
+        return validate_document(self, data)
 
     def validate_phone(self, phone):
-        content = phone_(self, phone)
-        return content
+        return phone_(self, phone)
 
     def validate_name(self, name):
-        content = name_(self, name)
-        return content
+        return name_(self, name)
 
     def validate_address(self, address):
-        content = address_(self, address)
-        return content
+        return address_(self, address)
 
     def validate_balance(self, balance):
-        content = balance_(self, balance)
-        return content
+        return balance_(self, balance)

@@ -1,34 +1,12 @@
 
 
 from rest_framework.test import APITestCase
-
-""" Essa classe realiza os testes sobre as ações possíveis em relação aos
-clientes."""
-
-null = None
-
-customer = {
-    "cpf": "40122912589",
-    "cnpj": null,
-    "name": "Vinicius Santos",
-    "address": "Rua Lira, 569, Jd. Sta, Ubatuba",
-    "phone": "1123569877",
-    "email": "vinicius2@hotmail.com",
-    "document": "CPF"
-}
-
-customer1 = {
-    "cpf": null,
-    "cnpj": "12345678912345",
-    "name": "Padaria LTDA",
-    "address": "Rua Lira, 569, Jd. Sta, São PAulo",
-    "phone": "1123569899",
-    "email": "pao@hotmail.com",
-    "document": "CNPJ"
-}
+from digital_bank.support_code.customer_test import customer, customer1
 
 
 class CostumerTestCase(APITestCase):
+    """ Essa classe realiza os testes sobre as ações possíveis em relação aos
+    clientes."""
 
     def test_input(self):
 

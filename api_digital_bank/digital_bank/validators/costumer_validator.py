@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+
 """ Esse script contem as os códigos de manipulaçao das validações dos dados 
 recibidos dos sobre clientes"""
 

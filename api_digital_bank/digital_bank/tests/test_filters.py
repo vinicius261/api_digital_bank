@@ -3,34 +3,11 @@
 from rest_framework.test import APITestCase
 
 from digital_bank.support_code.clean_id import clean_id_
-
-""" Essa classe realiza os testes sobre as ações possíveis em relação aos
-as consultas de transferências."""
-
-null = None
-
-customer = {
-    "cpf": "40122912589",
-    "cnpj": null,
-    "name": "Vinicius Santos",
-    "address": "Rua Lira, 569, Jd. Sta, Ubatuba",
-    "phone": "1123569877",
-    "email": "vinicius2@hotmail.com",
-    "document": "CPF"
-}
-
-customer2 = {
-    "cpf": null,
-    "cnpj": "12345678912345",
-    "name": "Padaria LTDA",
-    "address": "Rua Lira, 569, Jd. Sta, São PAulo",
-    "phone": "1123569899",
-    "email": "pao@hotmail.com",
-    "document": "CNPJ"
-}
-
+from digital_bank.support_code.filter_test import customer, customer2
 
 class FiltersTestCase(APITestCase):
+    """ Essa classe realiza os testes sobre as ações possíveis em relação aos
+    as consultas de transferências."""
 
     def test_transfers_between(self):
         customer_ = self.client.post('/cliente/', customer, format='json')
